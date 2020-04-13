@@ -1,0 +1,29 @@
+.chat:hover {
+  animation: up 0.2s ease-in-out alternate, parallax 0.5s ease-in-out 0.2s forwards;
+  transform-style: preserve-3d;
+}
+
+@keyframes up {
+  from {
+    padding: 10px;
+    box-shadow: 1px 1px 5px grey;
+  }
+  to {
+    padding: 12px;
+    transform: translateX(5px) translateY(2px);
+    box-shadow: 5px 5px 15px grey;
+  }
+}
+
+@keyframes parallax {
+  0% {
+    padding: 12px;
+    transform: perspective(500px) rotateY(0deg) translateX(5px) translateY(2px);
+    box-shadow: 5px 5px 15px grey;
+  }
+  100% {
+    padding: 12px;
+    transform: perspective(500px) rotateY(5deg);
+    box-shadow: -5px 5px 10px grey;
+  }
+}

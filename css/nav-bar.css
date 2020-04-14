@@ -17,6 +17,21 @@
   font-size: 20px;
 }
 
+.nav i:hover {
+  animation: shrink 0.2s ease-in forwards;
+}
+
+.nav i:nth-child(2) {
+  display: inline-block;
+  animation: sway 0.2s 0.9s 2;
+}
+
+@keyframes shrink {
+  to {
+    transform: scale(0.9);
+  }
+}
+
 .nav .nav__list-link {
   position: relative;
 }
@@ -34,17 +49,29 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  animation: stot 0.4s ease-in-out 0.9s 2;
+  z-index: 2;
+  animation: stot 0.4s ease-in-out 0.9s;
+}
+
+@keyframes sway {
+  from {
+    transform: rotateZ(10deg);
+  }
+  to {
+    transform: rotateZ(-20deg);
+  }
 }
 
 @keyframes stot {
   0% {
     transform: none;
   }
-  50% {
+  20%,
+  80% {
     transform: translateY(-5px) scale(1.3);
   }
-  70% {
+  40%,
+  100% {
     transform: translateY(0px) scale(1);
   }
 }
@@ -62,4 +89,77 @@
   transform: translateY(80px);
   animation: showNavBar 0.5s ease-out forwards;
   animation-delay: 0.5s;
+}
+
+.circle {
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: black;
+  opacity: 0;
+}
+
+.circle:first-child {
+  top: -10px;
+  left: -2px;
+  transform: rotateZ(-18deg);
+  animation: blink 0.5s infinite;
+}
+
+.circle:nth-child(2) {
+  top: -13px;
+  left: 8px;
+  animation: blink 0.5s 0.2s infinite;
+}
+
+.circle:nth-child(3) {
+  top: -10px;
+  left: 18px;
+  transform: rotateZ(18deg);
+  animation: blink 0.5s 0.4s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+.nav__list-link.explore {
+  display: inline-block;
+  animation: explore 1s 1s linear infinite forwards;
+}
+
+@keyframes explore {
+  0% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.nav__list-link.turn-around {
+  display: inline-block;
+  animation: turn-around 0.8s infinite;
+}
+
+@keyframes turn-around {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(180deg);
+  }
 }
